@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'btwn.apps.BtwnConfig',
     'beertween.apps.BeertweenConfig',
     'django.contrib.admin',
     'django.contrib.auth',

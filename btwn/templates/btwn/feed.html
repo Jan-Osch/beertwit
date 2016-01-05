@@ -1,0 +1,23 @@
+{% if feed %}
+    <ul>
+        {% for post in feed %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.post_text }}</p>
+
+                <a href ="{% url 'btwn:post_detail' post.id %}">view details</a>
+                <ul>
+                    {% for comment in post.comment_set.all %}
+                        <li>
+                            {{ comment.comment_text }}
+                            <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> No pint's available</p>
+{% endif %}
+
