@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {#    <link rel="stylesheet" href="style.css"/>#}
+    {#    <title>{% block title %}Beertweet{% endblock %}</title>#}
+</head>
+
+<body>
+<div id="sidebar">
+    {% block sidebar %}
+        <ul>
+            <li><a href="{% url 'btwn:home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'btwn:profile' %}">Account Settings : {{ user.username }}</a></li>
+                <li><a href="{% url 'btwn:feed' user.id %}">Your feed</a></li>
+                <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'btwn:login' %}">Login</a></li>
+                <li><a href="{% url 'btwn:register' %}">Register</a></li>
+            {% endif %}
+            <li><a href="{% url 'btwn:post_newest' %}">Newest</a></li>
+            <li><a href="{% url 'btwn:post_create' %}">Add a new post</a></li>
+        </ul>
+    {% endblock %}
+</div>
+<h1>{% block title %}Beertweet{% endblock %}</h1>
+
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

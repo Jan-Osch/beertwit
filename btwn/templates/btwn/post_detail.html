@@ -1,3 +1,17 @@
-<h1>{{ post.title }}</h1>
+{% extends 'btwn/base_generic.html' %}
+{% block title %}{{ post.title }}{% endblock %}
 
-<p>{{ post.post_text }}</p>
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.post_text }}</p>
+    <p>{{ post.author.profile_name }}</p>
+    <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
+    <ul>
+        {% for comment in post.comment_set.all %}
+        <li>
+            {{ comment.comment_text }}
+        </li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

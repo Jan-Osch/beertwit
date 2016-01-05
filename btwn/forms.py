@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from .models import UserProfile
+from .models import UserProfile, Post, Comment
 
 
 class UserForm(forms.ModelForm):
@@ -11,7 +11,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        exclude = []
+        fields = ['username', 'password', 'first_name', 'last_name', 'email']
 
     def clean_password_confirmation(self):
         confirmation = self.cleaned_data['password_confirmation']
@@ -30,10 +30,28 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ['user']
+
+        fields = ['profile_name']
 
     def clean_profile_name(self):
         data = self.cleaned_data['profile_name']
         if UserProfile.objects.filter(profile_name=data).exists():
             raise ValidationError("Profile name already taken")
         return data
+
+
+class LoginForm(forms.Form):
+    login = forms.CharField(label='User name', max_length=100, required=True)
+    password = forms.CharField(label='Your password', max_length=100, required=True)
+
+
+class CommentCreateForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comment_text']
+
+
+class PostCreateForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'post_text', 'public']

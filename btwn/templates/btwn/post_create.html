@@ -1,11 +1,12 @@
 {% extends 'btwn/base_generic.html' %}
 {% block title %}
-    Creating a comment
+    Adding a new post
 {% endblock %}
+
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create"/>
+        {{ post_create_form.as_p }}
+        <input type="submit" value="Add post"/>
     </form>
 {% endblock %}
