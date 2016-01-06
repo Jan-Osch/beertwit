@@ -1,0 +1,25 @@
+{% extends 'btwn/base_generic.html' %}
+{% load btwn_filters %}
+{% block title %}{{ user_profile.profile_name }} feed{% endblock %}
+{% block content %}
+    <p>followers: {{ user_profile.followers }}</p>
+    <p>folowing: {{ user_profile.following | length }}</p>
+    <p>joined: {{ user_profile.joined }}</p>
+    <p>posts: {{ user_profile.post_set.all | public_posts | length}}</p>
+    {% if user.is_authenticated %}
+        {% if following %}
+            <b>You are following {{ user_profile.profile_name }} </b>
+            <a href="{% url 'btwn:unfollow' user_profile.user.id %}">
+                <strong>unfollow</strong>
+            </a>
+        {% else %}
+            <a href="{% url 'btwn:follow' user_profile.user.id %}">
+                <strong>follow</strong>
+            </a>
+        {% endif %}
+    {% endif %}
+
+    {% include "btwn/generic_feed.html" %}
+    {% block feed %}
+    {% endblock %}
+{% endblock %}

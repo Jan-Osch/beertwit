@@ -2,16 +2,16 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ post.title }}</h2>
+    <a href="{% url 'btwn:feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
+    <p>{{ post.created_on }}</p>
     <p>{{ post.post_text }}</p>
-    <p>{{ post.author.profile_name }}</p>
     <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
     <ul>
-        {% for comment in post.comment_set.all %}
-        <li>
-            {{ comment.comment_text }}
-        </li>
-
+        {% for comment in post.comment_set.all|slice:':3' %}
+            <li>
+                <b><a href="{% url 'btwn:feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
+                <p>{{ comment.comment_text }}</p>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
