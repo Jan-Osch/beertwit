@@ -9,13 +9,5 @@
         <a href="{% url 'btwn:post_edit' post.id %}">Edit post</a>
         <a href="{% url 'btwn:post_delete' post.id %}">Delete post</a>
     {% endif %}
-    <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
-    <ul>
-        {% for comment in post.comment_set.all %}
-            <li>
-                <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
-                <p>{{ comment.comment_text }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    {% include 'btwn/comment_list.html' %}
 {% endblock %}
