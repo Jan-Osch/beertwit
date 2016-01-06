@@ -1,2 +1,13 @@
-<h1>{{ comment.id }}</h1>
-<p>{{ comment.comment_text }}</p>
+{% extends 'btwn/base_generic.html' %}
+{% block title %}
+    {{ comment.author.profile_name }}'s comment
+{% endblock %}
+{% block content %}
+    <p>{{ comment.created_on }}</p>
+    <p>{{ comment.comment_text }}</p>
+    {% if is_author %}
+        <a href="{% url 'btwn:comment_edit' comment.id %}">edit comment</a>
+        <a href="{% url 'btwn:comment_delete' comment.id %}">delete comment</a>
+    {% else %}
+    {% endif %}
+{% endblock %}
