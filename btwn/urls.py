@@ -5,10 +5,11 @@ from . import views
 app_name = 'btwn'
 urlpatterns = [
     url(r'^$', views.Newest.as_view(), name='home'),
-    url(r'^private$', views.private_feed, name='private_feed'),
+    url(r'^private$', views.HomeFeedView.as_view(), name='private_feed'),
     url(r'^post/create', views.post_create_view, name='post_create'),
     url(r'^post/(?P<pk>[0-9]+)/$', views.PostDetailView.as_view(), name='post_detail'),
-    url(r'^post/(?P<post_id>[0-9]+)/edit', views.post_edit_view, name='post_edit'),
+    url(r'^post/(?P<post_id>[0-9]+)/edit$', views.post_edit_view, name='post_edit'),
+    url(r'^post/(?P<pk>[0-9]+)/delete$', views.PostDeleteView.as_view(), name='post_delete'),
     url(r'^post/(?P<post_id>[0-9]+)/comment$', views.comment_create_view, name='comment_create'),
     url(r'^comment/(?P<pk>[0-9]+)$', views.CommentDetailView.as_view(), name='comment_detail'),
     url(r'^newest$', views.Newest.as_view(), name='post_newest'),

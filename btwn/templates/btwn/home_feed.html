@@ -2,7 +2,6 @@
 {% load btwn_filters %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
+    <p>You are following: {{ user_profile.following | length }} profiles</p>
     {% include 'btwn/generic_feed.html' %}
-    {% block feed %}
-    {% endblock %}
 {% endblock %}

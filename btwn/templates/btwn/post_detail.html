@@ -5,6 +5,10 @@
     <a href="{% url 'btwn:feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
     <p>{{ post.created_on }}</p>
     <p>{{ post.post_text }}</p>
+    {% if is_author %}
+        <a href="{% url 'btwn:post_edit' post.id %}">Edit post</a>
+        <a href="{% url 'btwn:post_delete' post.id %}">Delete post</a>
+    {% endif %}
     <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
     <ul>
         {% for comment in post.comment_set.all|slice:':3' %}
