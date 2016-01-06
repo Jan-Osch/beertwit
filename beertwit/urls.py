@@ -18,7 +18,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^beertween/', include('beertween.urls')),
     url(r'^btwn/', include('btwn.urls')),
     url(r'^admin/', admin.site.urls)
 ]
