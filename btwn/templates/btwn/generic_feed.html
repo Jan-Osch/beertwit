@@ -15,6 +15,7 @@
                             <li>
                                 <b><a href="{% url 'btwn:feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
                                 <p>{{ comment.comment_text }}</p>
+                                <a href="{% url 'btwn:comment_detail' comment.id %}">Comment details</a>
                             </li>
                         {% endfor %}
                     </ul>
