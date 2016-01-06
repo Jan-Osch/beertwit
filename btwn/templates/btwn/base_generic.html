@@ -2,35 +2,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <script src="{% static 'btwn/jquery-2.1.4.js' %}"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'btwn/materialize/css/materialize.min.css' %}"
+          media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'btwn/btwn-styles.css' %}"/>
     <title>Beertweet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-{% load btwn_filters %}
-<div id="sidebar">
-    {% block sidebar %}
-        <ul>
-            <li><a href="{% url 'btwn:public_feed' %}">Public Feed</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'btwn:private_feed' %}">Private Feed</a></li>
-                <li><a href="{% url 'btwn:post_create' %}">Add a new post</a></li>
-                <li><a href="{% url 'btwn:profile_feed' user.id %}">Profile : {{ user | profile_name }}</a></li>
-                <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'btwn:login' %}">Login</a></li>
-                <li><a href="{% url 'btwn:register' %}">Register</a></li>
-            {% endif %}
-        </ul>
-    {% endblock %}
-</div>
-<h1>
-    {% block title %}
-        Beertweet
-    {% endblock %}
-</h1>
 
-<div id="content">
-    {% block content %}{% endblock %}
+<body>
+<script src="{% static 'btwn/jquery-2.1.4.js' %}"></script>
+<script type="text/javascript" src="{% static 'btwn/materialize/js/materialize.min.js' %}"></script>
+
+{% load btwn_filters %}
+{% block navbar %}
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">BeerTween</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="{% url 'btwn:public_feed' %}">Public Feed</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'btwn:private_feed' %}">Private Feed</a></li>
+                    <li><a href="{% url 'btwn:post_create' %}">Add a new post</a></li>
+                    <li><a href="{% url 'btwn:profile_feed' user.id %}">{{ user | profile_name }}</a></li>
+                    <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'btwn:login' %}">Login</a></li>
+                    <li><a href="{% url 'btwn:register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+<div class="container">
+    <div class="row">
+        <h4 class="center-align">{% block title %}
+            Beertweet
+        {% endblock %}</h4>
+
+        <div class="col s12">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 </div>
 </body>
 </html>

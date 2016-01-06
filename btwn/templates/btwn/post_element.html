@@ -1,0 +1,15 @@
+<a href="{% url 'btwn:post_detail' post.id %}"><h5 class="center-align">{{ post.title }}</h5></a>
+
+<p class="center-align">
+    <a href="{% url 'btwn:profile_feed' post.author.user.id %}"><b>{{ post.author.profile_name }}</b>
+    </a>
+    <span>Created on: {{ post.created_on | date:"Y-M-d" }}</span></p>
+<img class="responsive-img" src="{{ post.image.url }}" alt="{{ post.title }}">
+<p>{{ post.post_text }}</p>
+{% if is_author %}
+    <div class="center-align">
+        <a href="{% url 'btwn:post_edit' post.id %}" class="waves-effect waves-light btn red btwn-button">Edit post</a>
+        <a href="{% url 'btwn:post_delete' post.id %}" class="waves-effect waves-light btn red btwn-button">Delete
+            post</a>
+    </div>
+{% endif %}
