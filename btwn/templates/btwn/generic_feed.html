@@ -1,28 +1,26 @@
 {% load btwn_filters %}
-{% block feed %}
-    {% if feed %}
-        <ul>
-            {% for post in feed %}
-                <li>
-                    <a href="{% url 'btwn:post_detail' post.id %}"><h2>{{ post.title }}</h2></a>
-                    <a href="{% url 'btwn:feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
-                    on {{ post.created_on }} wrote:
-                    <p>{{ post.post_text }}</p>
+{% if feed %}
+    <ul>
+        {% for post in feed %}
+            <li>
+                <a href="{% url 'btwn:post_detail' post.id %}"><h2>{{ post.title }}</h2></a>
+                <a href="{% url 'btwn:profile_feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
+                on {{ post.created_on }} wrote:
+                <p>{{ post.post_text }}</p>
 
-                    <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
-                    <ul>
-                        {% for comment in post.comment_set.all %}
-                            <li>
-                                <b><a href="{% url 'btwn:feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
-                                <p>{{ comment.comment_text }}</p>
-                                <a href="{% url 'btwn:comment_detail' comment.id %}">Comment details</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p> No pint's available</p>
-    {% endif %}
-{% endblock %}
+                <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
+                <ul>
+                    {% for comment in post.comment_set.all %}
+                        <li>
+                            <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
+                            <p>{{ comment.comment_text }}</p>
+                            <a href="{% url 'btwn:comment_detail' comment.id %}">Comment details</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> No pint's available</p>
+{% endif %}

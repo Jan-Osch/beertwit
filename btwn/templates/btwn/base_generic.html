@@ -13,13 +13,12 @@
 <div id="sidebar">
     {% block sidebar %}
         <ul>
-            <li><a href="{% url 'btwn:post_newest' %}">Public</a></li>
+            <li><a href="{% url 'btwn:public_feed' %}">Public Feed</a></li>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'btwn:account_settings' %}">Account Settings : {{ user.username }}</a></li>
-                <li><a href="{% url 'btwn:feed' user.id %}">Profile : {{ user | profile_name }}</a></li>
-                <li><a href="{% url 'btwn:private_feed'%}">Home</a></li>
-                <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
+                <li><a href="{% url 'btwn:private_feed' %}">Private Feed</a></li>
                 <li><a href="{% url 'btwn:post_create' %}">Add a new post</a></li>
+                <li><a href="{% url 'btwn:profile_feed' user.id %}">Profile : {{ user | profile_name }}</a></li>
+                <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'btwn:login' %}">Login</a></li>
                 <li><a href="{% url 'btwn:register' %}">Register</a></li>
