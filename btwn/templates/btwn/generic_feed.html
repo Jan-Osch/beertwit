@@ -7,6 +7,7 @@
                 <a href="{% url 'btwn:profile_feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
                 on {{ post.created_on }} wrote:
                 <p>{{ post.post_text }}</p>
+                <img src="{{ post.image.url }}" alt="">
 
                 <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
                 <ul>

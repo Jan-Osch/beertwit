@@ -1,0 +1,8 @@
+<ul>
+    {% for comment in post.comment_set.all %}
+        <li>
+            <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
+            <p>{{ comment.comment_text }}</p>
+        </li>
+    {% endfor %}
+</ul>

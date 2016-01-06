@@ -2,10 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    {#        <link rel="stylesheet" href="style.css"/>#}
     <script src="{% static 'btwn/jquery-2.1.4.js' %}"></script>
-    {#    <script src="{% static 'btwn/follow-buttons.js' %}"></script>#}
-    {#        TODO add AJAX style follow-unfollow buttons#}
     <title>Beertweet</title>
 </head>
 <body>
@@ -26,7 +23,11 @@
         </ul>
     {% endblock %}
 </div>
-<h1>{% block title %}Beertweet{% endblock %}</h1>
+<h1>
+    {% block title %}
+        Beertweet
+    {% endblock %}
+</h1>
 
 <div id="content">
     {% block content %}{% endblock %}

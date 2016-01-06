@@ -2,7 +2,7 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <a href="{% url 'btwn:feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
+    <a href="{% url 'btwn:profile_feed' post.author.user.id %}">{{ post.author.profile_name }}</a>
     <p>{{ post.created_on }}</p>
     <p>{{ post.post_text }}</p>
     {% if is_author %}
@@ -11,9 +11,9 @@
     {% endif %}
     <a href="{% url 'btwn:comment_create' post.id %}">add comment</a>
     <ul>
-        {% for comment in post.comment_set.all|slice:':3' %}
+        {% for comment in post.comment_set.all %}
             <li>
-                <b><a href="{% url 'btwn:feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
+                <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">{{ comment.author.profile_name }}</a></b>
                 <p>{{ comment.comment_text }}</p>
             </li>
         {% endfor %}

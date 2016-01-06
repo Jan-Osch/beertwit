@@ -54,4 +54,4 @@ class CommentCreateForm(forms.ModelForm):
 class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'post_text', 'public']
+        fields = ['title', 'post_text', 'public', 'image']

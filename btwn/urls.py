@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^private$', views.HomeFeedView.as_view(), name='private_feed'),
-    url(r'^profile/(?P<pk>[0-9]+)$', views.feed, name='profile_feed'),
+    url(r'^profile/(?P<pk>[0-9]+)$', views.profile_feed, name='profile_feed'),
     url(r'^$', views.PublicFeed.as_view(), name='public_feed'),
 
     url(r'^post/create$', views.post_create_view, name='post_create'),
@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^follow/(?P<pk>[0-9]+)$', views.follow, name='follow'),
     url(r'^unfollow/(?P<pk>[0-9]+)$', views.unfollow, name='unfollow')
 ]
+
 app_name = 'btwn'
