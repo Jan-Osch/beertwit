@@ -7,6 +7,16 @@
     padding: 30px;
 }
 
+.top-20{
+    margin-top: 20px;
+}
+.down-10{
+    margin-bottom: 10px;
+}
+
+a{
+    color: #ff5252;
+}
 .ignore-link {
     color: black;
 }

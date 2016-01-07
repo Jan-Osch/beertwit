@@ -24,7 +24,7 @@
                 <li><a href="{% url 'btwn:public_feed' %}">Public Feed</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'btwn:private_feed' %}">Private Feed</a></li>
-                    <li><a href="{% url 'btwn:post_create' %}">Add a new post</a></li>
+                    <li><a href="{% url 'btwn:post_create' %}">Add pint</a></li>
                     <li><a href="{% url 'btwn:profile_feed' user.id %}">{{ user | profile_name }}</a></li>
                     <li><a href="{% url 'btwn:logout' %}">Logout</a></li>
                 {% else %}

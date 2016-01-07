@@ -1,0 +1,34 @@
+<div class="center-align">
+    {% load btwn_filters %}
+
+    <div class="chip">
+        followers: {{ user_profile.followers }}
+    </div>
+    <div class="chip">
+        folowing: {{ user_profile.following | length }}
+    </div>
+    <div class="chip">
+        Pints: {{ user_profile.post_set.all | public_posts | length }}
+    </div>
+    <div class="chip">
+        Joined: {{ user_profile.joined | date:"Y-M-d" }}
+    </div>
+</div>
+<div class="center-align">
+    {% if user.is_authenticated %}
+        {% if  not is_self %}
+            {% if following %}
+                <a href="{% url 'btwn:unfollow' user_profile.user.id %}"
+                   class="waves-effect waves-light btn red btwn-button down-10 top-20">
+                    unfollow
+                </a>
+            {% else %}
+
+                <a href="{% url 'btwn:follow' user_profile.user.id %}"
+                   class="waves-effect waves-light btn red btwn-button down-10 top-20">
+                    follow
+                </a>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+</div>

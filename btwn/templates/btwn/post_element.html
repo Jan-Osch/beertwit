@@ -5,7 +5,7 @@
     </a>
     <span>Created on: {{ post.created_on | date:"Y-M-d" }}</span></p>
 <img class="responsive-img" src="{{ post.image.url }}" alt="{{ post.title }}">
-<p>{{ post.post_text }}</p>
+<p class="flow-text">{{ post.post_text }}</p>
 {% if is_author %}
     <div class="center-align">
         <a href="{% url 'btwn:post_edit' post.id %}" class="waves-effect waves-light btn red btwn-button">Edit post</a>

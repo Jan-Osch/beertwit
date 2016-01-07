@@ -1,16 +1,9 @@
 {% extends 'btwn/base_generic.html' %}
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
     <div class="z-depth-2 post-tab">
-        <a href="{% url 'btwn:profile_feed' post.author.user.id %}"><b>{{ post.author.profile_name }}</b></a>
-        <p>{{ post.created_on | date:"Y-M-d" }}</p>
-        <p>{{ post.post_text }}</p>
-        <img class="responsive-img" src="{{ post.image.url }}" alt="">
-        {% if is_author %}
-            <a href="{% url 'btwn:post_edit' post.id %}">Edit post</a>
-            <a href="{% url 'btwn:post_delete' post.id %}">Delete post</a>
-        {% endif %}
+        {% include 'btwn/post_element.html' %}
         {% include 'btwn/comment_list.html' %}
     </div>
 {% endblock %}

@@ -1,7 +1,8 @@
-<div class="center-align"><a href="{% url 'btwn:comment_create' post.id %}" class="waves-effect waves-light btn red btwn-button">
+<div class="center-align"><a href="{% url 'btwn:comment_create' post.id %}"
+                             class="waves-effect waves-light btn red btwn-button">
     Add new comment</a></div>
 {% for comment in post.comment_set.all %}
-    <div class="z-depth-2 comment-tab">
+    <div class="z-depth-1 comment-tab hoverable">
         <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">
             {{ comment.author.profile_name }}</a></b>
         <a href="{% url 'btwn:comment_detail' comment.id %}" class="ignore-link">
