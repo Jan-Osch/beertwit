@@ -4,11 +4,24 @@
     Editing {{ post_title }}
 {% endblock %}
 {% block content %}
+    {% load materializecss %}
 
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update"/>
+        {{ form.title |materializecss }}
+        {{ form.post_text |materializecss }}
+        {{ form.image |materializecss }}
+        <div class="fieldWrapper">
+            <div class="col s12">
+                {{ form.public.errors }}
+                {{ form.public }}
+                <label for="id_public">Public</label>
+            </div>
+        </div>
+
+        <div class="center-align"><input type="submit" value="Update"
+                                         class="waves-effect waves-light btn red btwn-button"/></div>
+
     </form>
 {% endblock %}
 

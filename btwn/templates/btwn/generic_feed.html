@@ -7,5 +7,7 @@
         </div>
     {% endfor %}
 {% else %}
-    <p> No pint's available</p>
+    <div class="center-align"><p> No pint's available</p>
+        {% load static %}
+        <img src="{% static 'btwn/sad-beer.jpg' %}" alt=""></div>
 {% endif %}

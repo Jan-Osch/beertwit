@@ -4,11 +4,11 @@
     Editing {{ instance.author.profile_name }}'s comment
 {% endblock %}
 {% block content %}
-
+    {% load  materializecss %}
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update"/>
+        {{ form| materializecss }}
+        <div class="center-align"><input type="submit" value="Update"
+                                          class="waves-effect waves-light btn red btwn-button"/></div>
     </form>
 {% endblock %}
-

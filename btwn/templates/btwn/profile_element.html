@@ -5,10 +5,10 @@
         followers: {{ user_profile.followers }}
     </div>
     <div class="chip">
-        folowing: {{ user_profile.following | length }}
+        folowing: {{ user_profile.following.all | length }}
     </div>
     <div class="chip">
-        Pints: {{ user_profile.post_set.all | public_posts | length }}
+        Pints: {{ user_profile.post_set.all | length }}
     </div>
     <div class="chip">
         Joined: {{ user_profile.joined | date:"Y-M-d" }}

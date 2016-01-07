@@ -3,11 +3,21 @@
     {{ comment.author.profile_name }}'s comment
 {% endblock %}
 {% block content %}
-    <p>{{ comment.created_on }}</p>
-    <p>{{ comment.comment_text }}</p>
-    {% if is_author %}
-        <a href="{% url 'btwn:comment_edit' comment.id %}">edit comment</a>
-        <a href="{% url 'btwn:comment_delete' comment.id %}">delete comment</a>
-    {% else %}
-    {% endif %}
+    <div class="z-depth-1 comment-tab hoverable">
+        <b><a href="{% url 'btwn:profile_feed' comment.author.user.id %}">
+            {{ comment.author.profile_name }}</a></b>
+        <span>on {{ comment.created_on | date:"Y-M-d" }}</span>
+        <a href="{% url 'btwn:comment_detail' comment.id %}" class="ignore-link">
+            <p>{{ comment.comment_text }}</p>
+        </a>
+        {% if is_author %}
+            <div class="center-align"><a href="{% url 'btwn:comment_edit' comment.id %}"
+                                         class="waves-effect waves-light btn red btwn-button">edit
+                comment</a>
+                <a href="{% url 'btwn:comment_delete' comment.id %}"
+                   class="waves-effect waves-light btn red btwn-button">delete
+                    comment</a></div>
+        {% else %}
+        {% endif %}
+    </div>
 {% endblock %}

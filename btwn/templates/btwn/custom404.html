@@ -4,6 +4,9 @@
     UPS!
 {% endblock %}
 {% block content %}
-    <h1><b><strong>404</strong></b></h1>
-    Something went wrong!
+    <div class="center-align"><h1><b><strong>404</strong></b></h1>
+        {% load static %}
+        <img src="{% static 'btwn/sad-beer.jpg' %}" alt="">
+        <p>Something went wrong!</p>
+    </div>
 {% endblock %}

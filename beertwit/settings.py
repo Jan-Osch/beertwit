@@ -24,11 +24,13 @@ SECRET_KEY = '&17#f^wfpx_787$pzh$)ypvudddf#3wfh81qgy5+v_by5*76bw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'materializecssform',
     'btwn.apps.BtwnConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -5,7 +5,9 @@
 {% block content %}
     <form action="" method="post" e>
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create"/>
+        {% load materializecss %}
+        {{ form | materializecss }}
+        <div class="center-align"><input type="submit" value="Create"
+                                         class="waves-effect waves-light btn red btwn-button"/></div>
     </form>
 {% endblock %}
